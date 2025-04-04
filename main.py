@@ -1,24 +1,51 @@
-# Give the class a name
 class PersonalAssistant:
-  # Add an __init__ function here
-  def __init__(self, contacts, todos):
+
+  def __init__(self):
     self.contacts = {
-        'Ann': 'Marketing Coordinator',
-        'Chelsea': 'Software Developer',
-        'Nichole': 'Sales Representative',
-        'Max': 'Technical Writer'
+        'Ann': 'Marketing Coordinator', 'Chelsea': 'Software Developer','Nichole': 'Sales Representative'
     }
     self.todos = []
 
-  # Complete the get_contact function code
+
+  def add_todo(self, new_item):
+    self.todos.append(new_item)
+
+  def remove_todo(self, todo_item):
+    if todo_item in self.todos:
+      # Get the todo_item index in list
+      index = self.todos.index(todo_item)
+      # pop the index for todo_item in todos list
+      self.todos.pop(index)
+    else:
+      print("Todo is not in list!")
+
+  def get_todos(self):
+    return self.todos
+
+  def get_birthday(self, name):
+    if name == "Ann":
+      return "Birthday is 08/12/2001!"
+    elif name == "Chelsea":
+      return "Birthday is 10/23/1996"
+    elif name == "Nichole":
+      return "Birthday is 05/21/1993!"
+    else:
+      return "Can't find a birthday for this person..."
+
   def get_contact(self, name):
     if name in self.contacts:
-      return self.contacts[name]
+        return self.contacts[name]
     else:
-      return "There is no existing contact with that name."
+        return "No contact with that name!"
 
 
-# Code to test output of the class
+# Code to test the class
 assistant = PersonalAssistant()
-# Change name to one from your contacts
+assistant.add_todo("Pick up groceries")
+assistant.add_todo("Schedule meeting for next week")
+print(assistant.get_todos())
+assistant.remove_todo("Pick up groceries")
+print(assistant.get_todos())
+# Change names to use your own data
 print(assistant.get_contact("Chelsea"))
+print(assistant.get_birthday("Ann"))
